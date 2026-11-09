@@ -118,6 +118,13 @@ bdi { unicode-bidi: isolate; }
 .hero h1 { font-size: var(--step-4); letter-spacing: -0.01em; }
 .lead { font-size: var(--step-1); margin-top: 16px; max-width: 34em; }
 .sub { color: var(--muted); margin-top: 14px; max-width: 38em; }
+.watch { margin-top: 18px; }
+.watch a {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;
+  background: var(--primary); color: var(--primary-fg); border-radius: 8px; padding: 9px 16px;
+}
+.watch a::before { content: ""; width: 0; height: 0; border-block: 6px solid transparent; border-inline-start: 10px solid currentColor; }
+.watch a:hover { opacity: 0.9; }
 
 .ticket { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
 .ticket header { padding: 14px 18px; border-bottom: 1px dashed var(--border); }
@@ -277,6 +284,8 @@ dialog#lb::backdrop { background: var(--overlay); }
       <p class="lead he">תוכנה משרדית לחברת תיווך שמסדרת לעסקים מקדמות על חשבון מכירות עתידיות (MCA). היא מלווה כל עסקה מהשיחה הראשונה ועד המימון, עוקבת אחרי התשלומים ומראה מתי הלקוח יכול לחדש.</p>
       <p class="sub en">This page explains what each part of the system does, with screens from the working demo. Every business, funder and number in the demo is fictional and marked (DEMO).</p>
       <p class="sub he">בדף הזה מוסבר מה עושה כל חלק במערכת, עם מסכים מתוך ההדגמה העובדת. כל עסק, גוף מימון ומספר בהדגמה הם בדויים ומסומנים <bdi>(DEMO)</bdi>. מסכי המערכת עצמם באנגלית.</p>
+      <p class="watch en"><a href="#video">Watch the video tour (2:40)</a></p>
+      <p class="watch he"><a href="#video">צפו בסרטון הסיור (2:40)</a></p>
     </div>
     <article class="ticket" aria-labelledby="ticket-name">
       <header>
@@ -888,6 +897,13 @@ dialog#lb::backdrop { background: var(--overlay); }
 document.querySelectorAll('[data-set-lang]').forEach(function (b) {
   b.addEventListener('click', function () { document.querySelectorAll('video').forEach(function (v) { v.pause(); }); });
 });
+// "#video-he" / "#video-en": open the page in that language at the video.
+if (location.hash === '#video-he' || location.hash === '#video-en') {
+  var want = location.hash.slice(7);
+  var btn = document.querySelector('[data-set-lang="' + want + '"]');
+  if (btn) btn.click();
+  setTimeout(function () { document.getElementById('video').scrollIntoView(); }, 60);
+}
 </script>
 
 </body>
