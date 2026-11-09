@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MCA Deal Hub: office software for an MCA brokerage. A product overview with screens and a short video tour, in English and Hebrew.">
+<meta property="og:title" content="MCA Deal Hub"><meta property="og:description" content="MCA Deal Hub: office software for an MCA brokerage. A product overview with screens and a short video tour, in English and Hebrew."><meta property="og:type" content="website"><meta property="og:url" content="https://noamwol19384-debug.github.io/mca-deal-hub-overview/"><meta property="og:image" content="https://noamwol19384-debug.github.io/mca-deal-hub-overview/tour-poster.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>MCA Deal Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a deal file. A sticky bar with the language switch; a hero with one real deal ticket and the
+   stage strip of a deal's path; then one section per part of the system, text beside framed screens
+   (stacked on phones); then what is real today, the known limits and how to see it live.
+   Colors and type follow the app's own design tokens, so the page and its screens read as one product. */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-2: #edf0f3;
+  --band: #e8eef7;
+  --border: #d9dfe7;
+  --text: #141b24;
+  --muted: #4b5868;
+  --primary: #1f4e8c;
+  --primary-fg: #ffffff;
+  --positive: #1e6b45;
+  --positive-subtle: #e6f0ea;
+  --caution: #8a5a00;
+  --caution-subtle: #f6efe2;
+  --frame: #c9d2de;
+  --shadow: 0 1px 2px rgb(20 27 36 / 0.06), 0 10px 28px rgb(20 27 36 / 0.09);
+  --overlay: rgb(20 27 36 / 0.62);
+  --font: 'IBM Plex Sans', 'IBM Plex Sans Hebrew', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1319; --surface: #151c25; --surface-2: #1b2430; --band: #121b27; --border: #2a3543;
+    --text: #e7ecf2; --muted: #a7b2c0; --primary: #8db2ec; --primary-fg: #0e1319;
+    --positive: #6ccb97; --positive-subtle: #1b3328; --caution: #e3b25c; --caution-subtle: #362b19;
+    --frame: #33414f; --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px rgb(0 0 0 / 0.35); --overlay: rgb(0 0 0 / 0.75);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1319; --surface: #151c25; --surface-2: #1b2430; --band: #121b27; --border: #2a3543;
+  --text: #e7ecf2; --muted: #a7b2c0; --primary: #8db2ec; --primary-fg: #0e1319;
+  --positive: #6ccb97; --positive-subtle: #1b3328; --caution: #e3b25c; --caution-subtle: #362b19;
+  --frame: #33414f; --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px rgb(0 0 0 / 0.35); --overlay: rgb(0 0 0 / 0.75);
+  color-scheme: dark;
+}
+
+/* Language: English unless the page says Hebrew. */
+:root:not([data-lang="he"]) .he { display: none !important; }
+:root[data-lang="he"] .en { display: none !important; }
+/* The mono face has no Hebrew letters: Hebrew labels use the body face, without letter-spacing. */
+:root[data-lang="he"] :is(.eyebrow, .kicker, .demo .label, th, .path h2, .ticket header p:first-child, .ticket dd small, .tag, .tour .min) {
+  font-family: var(--font); letter-spacing: 0; text-transform: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface);
+}
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; margin: 0; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--primary); text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+.wrap {
+  max-width: 1160px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.fig, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+bdi { unicode-bidi: isolate; }
+
+/* Top bar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: 0.01em; }
+.brand svg { flex: none; }
+.tag {
+  font-family: var(--mono); font-size: var(--step--1); color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; white-space: nowrap;
+}
+.lang { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.lang button {
+  font: inherit; font-size: 0.875rem; font-weight: 500; padding: 6px 12px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--primary); color: var(--primary-fg); }
+
+/* Hero */
+.hero { background: var(--band); border-bottom: 1px solid var(--border); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; padding-block: 48px 40px; align-items: start; }
+.eyebrow { font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+.hero h1 { font-size: var(--step-4); letter-spacing: -0.01em; }
+.lead { font-size: var(--step-1); margin-top: 16px; max-width: 34em; }
+.sub { color: var(--muted); margin-top: 14px; max-width: 38em; }
+
+.ticket { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.ticket header { padding: 14px 18px; border-bottom: 1px dashed var(--border); }
+.ticket header p:first-child { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.ticket header p:last-child { font-weight: 600; margin-top: 2px; }
+.ticket dl { margin: 0; padding: 6px 18px 10px; }
+.ticket .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 8px; border-bottom: 1px solid var(--surface-2); }
+.ticket .row:last-child { border-bottom: 0; }
+.ticket dt { color: var(--muted); font-size: 0.9375rem; }
+.ticket dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: end; font-weight: 500; }
+.ticket dd small { display: block; font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.ticket footer { padding: 10px 18px 14px; font-size: var(--step--1); color: var(--muted); background: var(--surface-2); }
+
+/* Stage strip: the real order of a deal */
+.path { padding-block: 28px 8px; }
+.path h2 { font-size: var(--step--1); font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+.path ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+.path a {
+  display: flex; flex-direction: column; gap: 4px; height: 100%; text-decoration: none; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; position: relative;
+}
+.path a:hover { border-color: var(--primary); }
+.path .n { font-family: var(--mono); font-size: var(--step--1); color: var(--primary); }
+.path .t { font-size: 0.9375rem; font-weight: 500; line-height: 1.3; }
+
+/* Roles */
+.roles { padding-block: 40px 8px; }
+.roles h2, .sec-head h2 { font-size: var(--step-3); letter-spacing: -0.005em; }
+.roles > .wrap > p { color: var(--muted); margin-top: 8px; max-width: 44em; }
+.role-grid { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+.role-grid li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.role-grid b { display: block; margin-bottom: 2px; }
+.role-grid span { color: var(--muted); font-size: 0.9375rem; }
+.role-grid li.owner { background: var(--band); }
+
+/* Feature sections */
+.group { padding-block: 48px 0; }
+.sec-head { margin-bottom: 8px; }
+.sec-head p { color: var(--muted); margin-top: 8px; max-width: 44em; }
+.feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; padding-block: 36px; border-top: 1px solid var(--border); scroll-margin-top: 72px; }
+.feature:first-of-type { border-top: 0; }
+.feature .text { min-width: 0; }
+.kicker { font-family: var(--mono); font-size: var(--step--1); color: var(--primary); letter-spacing: 0.06em; text-transform: uppercase; }
+.feature h3 { font-size: var(--step-2); margin-top: 6px; }
+.feature .one { font-size: var(--step-1); margin-top: 10px; }
+.feature ul { margin: 14px 0 0; padding-inline-start: 1.15em; display: grid; gap: 6px; }
+.feature li::marker { color: var(--primary); }
+.demo { margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 0.9375rem; }
+.demo .label { display: block; font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.status { margin-top: 12px; display: flex; gap: 10px; align-items: flex-start; font-size: 0.9375rem; }
+.pill { flex: none; font-size: var(--step--1); font-weight: 500; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+.pill.ok { background: var(--positive-subtle); color: var(--positive); }
+.pill.stand { background: var(--caution-subtle); color: var(--caution); }
+.status p { color: var(--muted); padding-top: 1px; }
+
+.shots { display: grid; gap: 16px; min-width: 0; align-content: start; }
+.shots.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.shots.two figure:first-child { grid-column: 1 / -1; }
+figure { margin: 0; min-width: 0; }
+.shot {
+  display: block; width: 100%; padding: 0; border: 1px solid var(--frame); border-radius: 10px; overflow: hidden;
+  background: var(--surface); box-shadow: var(--shadow); cursor: zoom-in; text-align: start; font: inherit; color: inherit;
+}
+.shot:hover { border-color: var(--primary); }
+.chrome { display: flex; align-items: center; gap: 10px; padding: 7px 10px; background: var(--surface-2); border-bottom: 1px solid var(--frame); direction: ltr; }
+.dots { display: inline-flex; gap: 5px; flex: none; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--frame); display: block; }
+.url { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.shot img { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; background: var(--surface-2); }
+.shot.tall img { aspect-ratio: 16 / 13; }
+figcaption { font-size: var(--step--1); color: var(--muted); margin-top: 8px; }
+
+.phone { justify-self: center; width: min(100%, 300px); }
+.phone .shot { border-radius: 30px; border-width: 8px; border-color: var(--text); padding: 0; }
+.phone .shot img { aspect-ratio: 390 / 760; }
+
+/* Today vs live */
+.real { padding-block: 56px 0; }
+.table-scroll { overflow-x: auto; margin-top: 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.9375rem; }
+th, td { text-align: start; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: 0; }
+th { font-size: var(--step--1); font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--surface-2); }
+td:first-child { font-weight: 500; }
+td:nth-child(2) { color: var(--muted); }
+
+.limits { padding-block: 48px 0; }
+.limits ul { margin: 16px 0 0; padding-inline-start: 1.15em; display: grid; gap: 8px; max-width: 48em; }
+
+.live { padding-block: 48px 64px; }
+.live-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; margin-top: 20px; }
+.live-grid > div > p + p { margin-top: 10px; }
+.tour { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 10px; }
+.tour li { counter-increment: s; display: grid; grid-template-columns: 2.2em minmax(0, 1fr); gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.tour li::before { content: counter(s); font-family: var(--mono); color: var(--primary); font-weight: 500; }
+.tour b { font-weight: 600; }
+.tour .min { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); }
+
+.foot { border-top: 1px solid var(--border); background: var(--surface); }
+.foot .wrap { padding-block: 20px; font-size: var(--step--1); color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* Larger view */
+dialog#lb { padding: 0; border: 0; background: transparent; max-width: min(1320px, 100vw); width: 100%; max-height: 100vh; height: 100%; }
+dialog#lb::backdrop { background: var(--overlay); }
+.lb-inner { height: 100%; display: flex; flex-direction: column; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); gap: 10px; }
+.lb-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #fff; }
+.lb-top p { font-size: 0.9375rem; min-width: 0; }
+.lb-close { font: inherit; font-weight: 500; background: #ffffff; color: #141b24; border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; flex: none; }
+.lb-scroll { flex: 1; overflow: auto; border-radius: 10px; background: #ffffff; -webkit-overflow-scrolling: touch; }
+.lb-scroll img { display: block; max-width: none; width: 100%; min-width: 0; height: auto; }
+.lb-scroll img.native { width: auto; max-width: 100%; margin-inline: auto; }
+
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 36px 32px; }
+  .path ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .feature { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .live-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .path ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shots.two { grid-template-columns: minmax(0, 1fr); }
+  .tag { display: none; }
+  .ticket dt { font-size: 0.875rem; }
+}
+
+.video { padding-block: 40px 8px; }
+.video h2 { font-size: var(--step-3); }
+.video > p { color: var(--muted); margin-top: 8px; max-width: 44em; }
+.player { margin-top: 18px; border: 1px solid var(--frame); border-radius: 12px; overflow: hidden; background: #10233f; box-shadow: var(--shadow); max-width: 960px; }
+.player video { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #10233f; }
+.video .note { font-size: var(--step--1); color: var(--muted); margin-top: 10px; }
+</style>
+</head>
+<body>
+
+
+<div class="bar">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="3" width="5" height="16" rx="1.5" fill="var(--primary)"/><rect x="8.5" y="3" width="5" height="11" rx="1.5" fill="var(--primary)" opacity=".7"/><rect x="16" y="3" width="5" height="6" rx="1.5" fill="var(--primary)" opacity=".45"/></svg>
+      <span>MCA Deal Hub</span>
+      <span class="tag"><span class="en">Product overview</span><span class="he">סקירת המוצר</span></span>
+    </div>
+    <div class="lang" role="group" aria-label="Language / שפה">
+      <button type="button" id="lang-en" data-set-lang="en" aria-pressed="true">English</button>
+      <button type="button" id="lang-he" data-set-lang="he" aria-pressed="false">עברית</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow"><span class="en">Software for an MCA brokerage</span><span class="he">תוכנה לחברת תיווך של מימון MCA</span></p>
+      <h1>MCA Deal Hub</h1>
+      <p class="lead en">Office software for a brokerage that arranges merchant cash advances. It follows every deal from the first call to the funding, tracks the payments, and shows when the client can renew.</p>
+      <p class="lead he">תוכנה משרדית לחברת תיווך שמסדרת לעסקים מקדמות על חשבון מכירות עתידיות (MCA). היא מלווה כל עסקה מהשיחה הראשונה ועד המימון, עוקבת אחרי התשלומים ומראה מתי הלקוח יכול לחדש.</p>
+      <p class="sub en">This page explains what each part of the system does, with screens from the working demo. Every business, funder and number in the demo is fictional and marked (DEMO).</p>
+      <p class="sub he">בדף הזה מוסבר מה עושה כל חלק במערכת, עם מסכים מתוך ההדגמה העובדת. כל עסק, גוף מימון ומספר בהדגמה הם בדויים ומסומנים <bdi>(DEMO)</bdi>. מסכי המערכת עצמם באנגלית.</p>
+    </div>
+    <article class="ticket" aria-labelledby="ticket-name">
+      <header>
+        <p><span class="en">One demo deal, start to finish</span><span class="he">עסקת הדגמה אחת, מההתחלה ועד הסוף</span></p>
+        <p id="ticket-name"><bdi>Peak Roofing &amp; Construction LLC (DEMO)</bdi></p>
+      </header>
+      <dl>
+        <div class="row"><dt><span class="en">Funded</span><span class="he">סכום המימון</span></dt><dd><bdi>$50,000.00</bdi></dd></div>
+        <div class="row"><dt><span class="en">Factor rate</span><span class="he">מקדם (factor rate)</span></dt><dd>1.40</dd></div>
+        <div class="row"><dt><span class="en">Total payback (RTR)</span><span class="he">סך ההחזר (RTR)</span></dt><dd><bdi>$70,000.00</bdi></dd></div>
+        <div class="row"><dt><span class="en">Payments</span><span class="he">תשלומים</span></dt><dd><bdi>126 × $555.56</bdi><small class="en">daily, the last one $555.00</small><small class="he">יומיים, האחרון <bdi>$555.00</bdi></small></dd></div>
+        <div class="row"><dt><span class="en">50% paid, projected</span><span class="he">תאריך צפוי ל-50% החזר</span></dt><dd><span class="en">Feb 11, 2027</span><span class="he">11.02.2027</span></dd></div>
+        <div class="row"><dt><span class="en">Commission</span><span class="he">עמלה</span></dt><dd><bdi>$6,000.00</bdi><small class="en">rep $2,400 · house $3,600</small><small class="he">נציג <bdi>$2,400</bdi> · החברה <bdi>$3,600</bdi></small></dd></div>
+      </dl>
+      <footer><span class="en">The system works out every figure here. The payment schedule skips weekends and bank holidays.</span><span class="he">המערכת מחשבת את כל המספרים כאן. לוח התשלומים מדלג על סופי שבוע וחגים בנקאיים.</span></footer>
+    </article>
+  </div>
+</header>
+
+<nav class="path wrap" aria-labelledby="path-title">
+  <h2 id="path-title"><span class="en">The path of a deal</span><span class="he">המסלול של עסקה</span></h2>
+  <ol>
+    <li><a href="#pipeline"><span class="n">1</span><span class="t"><span class="en">Lead and deal</span><span class="he">ליד ועסקה</span></span></a></li>
+    <li><a href="#portal"><span class="n">2</span><span class="t"><span class="en">Documents</span><span class="he">מסמכים</span></span></a></li>
+    <li><a href="#bank"><span class="n">3</span><span class="t"><span class="en">Bank analysis</span><span class="he">ניתוח דפי בנק</span></span></a></li>
+    <li><a href="#matching"><span class="n">4</span><span class="t"><span class="en">Matching funders</span><span class="he">התאמת גופי מימון</span></span></a></li>
+    <li><a href="#submissions"><span class="n">5</span><span class="t"><span class="en">Submission</span><span class="he">הגשה</span></span></a></li>
+    <li><a href="#offers"><span class="n">6</span><span class="t"><span class="en">Offers</span><span class="he">הצעות</span></span></a></li>
+    <li><a href="#funding"><span class="n">7</span><span class="t"><span class="en">Funding and payments</span><span class="he">מימון ותשלומים</span></span></a></li>
+    <li><a href="#commissions"><span class="n">8</span><span class="t"><span class="en">Commission and renewal</span><span class="he">עמלה וחידוש</span></span></a></li>
+  </ol>
+</nav>
+
+
+<section class="video wrap" id="video" aria-labelledby="video-title">
+  <h2 id="video-title"><span class="en">Watch the tour</span><span class="he">צפו בסיור</span></h2>
+  <p class="en">A short tour of the working demo, under 3 minutes, with narration and captions.</p>
+  <p class="he">סיור קצר בהדגמה העובדת, פחות מ-3 דקות, עם קריינות וכתוביות.</p>
+  <div class="player">
+    <video class="en" id="video-en" controls preload="metadata" playsinline poster="tour-poster.jpg"><source src="mca-deal-hub-tour-en.mp4" type="video/mp4"></video>
+    <video class="he" id="video-he" controls preload="metadata" playsinline poster="tour-poster.jpg"><source src="mca-deal-hub-tour-he.mp4" type="video/mp4"></video>
+  </div>
+  <p class="note en">English narration. Switch the page to עברית for the Hebrew version. The voice is a computer voice.</p>
+  <p class="note he">קריינות בעברית. במצב English מתנגנת הגרסה באנגלית. הקול הוא קול ממוחשב.</p>
+</section>
+
+<section class="roles" aria-labelledby="roles-title">
+  <div class="wrap">
+    <h2 id="roles-title"><span class="en">Built for the whole team</span><span class="he">בנוי לכל הצוות</span></h2>
+    <p class="en">Each person has a role. The role decides what they can see and do.</p>
+    <p class="he">לכל אדם יש תפקיד במערכת, והוא קובע מה אפשר לראות ולעשות.</p>
+    <ul class="role-grid">
+      <li><b>Rep</b><span class="en">Talk to business owners, work their own deals and present offers.</span><span class="he">נציגים: מדברים עם בעלי עסקים, מטפלים בעסקאות שלהם ומציגים הצעות.</span></li>
+      <li><b>Processor</b><span class="en">Check documents, analyze bank statements, send deals to funders and record fundings.</span><span class="he">מעבדי תיקים: בודקים מסמכים, מנתחים דפי בנק, שולחים עסקאות לגופי מימון ורושמים מימונים.</span></li>
+      <li><b>Manager</b><span class="en">Oversee every deal, approve exceptions, manage funders and commissions.</span><span class="he">מנהלים: רואים כל עסקה, מאשרים חריגות ומנהלים את גופי המימון והעמלות.</span></li>
+      <li><b>Compliance</b><span class="en">State rules, licenses, consent and the audit log. They read every deal and change none.</span><span class="he">ציות: כללי המדינות, רישיונות, הסכמות ויומן הביקורת. קוראים כל עסקה ולא משנים אף אחת.</span></li>
+      <li><b>Admin</b><span class="en">Staff accounts, roles and settings.</span><span class="he">מנהלי מערכת: חשבונות הצוות, התפקידים וההגדרות.</span></li>
+      <li><b>Viewer</b><span class="en">Read everything, change nothing. Private numbers stay hidden.</span><span class="he">צופים: רואים הכול ולא משנים דבר. מספרים פרטיים נשארים מוסתרים.</span></li>
+      <li class="owner"><b><span class="en">The business owner</span><span class="he">בעלי העסק</span></b><span class="en">Never signs in to the office system. Uses a private document page on the phone.</span><span class="he">לא נכנסים למערכת של המשרד. משתמשים בדף מסמכים פרטי בטלפון.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="group" aria-labelledby="g1-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="g1-title"><span class="en">Along the deal's path</span><span class="he">לאורך המסלול של העסקה</span></h2>
+      <p class="en">The eight steps every deal goes through, in order.</p>
+      <p class="he">שמונת השלבים שכל עסקה עוברת, לפי הסדר.</p>
+    </div>
+
+    <!-- 1 Pipeline -->
+    <article class="feature" id="pipeline">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 1</span><span class="he">שלב 1</span></p>
+        <h3><span class="en">Leads, deals and the pipeline</span><span class="he">לידים, עסקאות ולוח השלבים</span></h3>
+        <p class="one en">Every lead and deal in one place, on a board by stage.</p>
+        <p class="one he">כל ליד וכל עסקה במקום אחד, על לוח לפי שלבים.</p>
+        <ul class="en">
+          <li>13 stages from "New lead" to "Funded", plus "On hold" and "Dead". A board view (drag a card) and a table view.</li>
+          <li>Before a deal moves on, the system checks what the next stage needs. A blocked move lists what is missing, with a "Why?" link.</li>
+          <li>Filters, saved views, CSV export, and one search box for deals, businesses, phone numbers and the last 4 digits of the EIN.</li>
+          <li>Leads come in by hand or from a CSV file, each with its lead source.</li>
+          <li>The deal page holds the summary, the document checklist and the full history of actions.</li>
+        </ul>
+        <ul class="he">
+          <li>13 שלבים, מ-<bdi>"New lead"</bdi> ועד <bdi>"Funded"</bdi>, ועוד <bdi>"On hold"</bdi> ו-<bdi>"Dead"</bdi>. תצוגת לוח (גוררים כרטיס) ותצוגת טבלה.</li>
+          <li>לפני שעסקה עוברת שלב, המערכת בודקת מה השלב הבא דורש. מעבר חסום מציג מה חסר, עם קישור <bdi>"Why?"</bdi>.</li>
+          <li>מסננים, תצוגות שמורות, ייצוא ל-CSV, ותיבת חיפוש אחת לעסקאות, לעסקים, למספרי טלפון ול-4 הספרות האחרונות של מספר המעסיק (EIN).</li>
+          <li>לידים נכנסים ידנית או מקובץ CSV, כל אחד עם מקור הליד שלו.</li>
+          <li>דף העסקה מרכז את התקציר, רשימת המסמכים והיסטוריית הפעולות המלאה.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Five fictional businesses, each at a different stage.</span><span class="he">חמישה עסקים בדויים, כל אחד בשלב אחר.</span></p>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><button type="button" class="shot" data-src="pipeline.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/pipeline</span></span><img src="pipeline.png" alt="The pipeline board with deal cards in stage columns" loading="lazy"></button>
+          <figcaption><span class="en">The pipeline board. Each column is a stage, with its count and total amount.</span><span class="he">לוח השלבים. כל עמודה היא שלב, עם מספר העסקאות והסכום הכולל.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="pipeline-table.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/pipeline · table</span></span><img src="pipeline-table.png" alt="The pipeline as a table of deals" loading="lazy"></button>
+          <figcaption><span class="en">The same deals as a table.</span><span class="he">אותן עסקאות כטבלה.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="deal.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-apex</span></span><img src="deal.png" alt="A deal page for Apex Logistics" loading="lazy"></button>
+          <figcaption><span class="en">A deal page.</span><span class="he">דף עסקה.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 2 Portal -->
+    <article class="feature" id="portal">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 2</span><span class="he">שלב 2</span></p>
+        <h3><span class="en">The business owner's document page</span><span class="he">דף המסמכים של בעלי העסק</span></h3>
+        <p class="one en">The owner sends documents from the phone, with no app and no password.</p>
+        <p class="one he">בעלי העסק שולחים מסמכים מהטלפון, בלי אפליקציה ובלי סיסמה.</p>
+        <ul class="en">
+          <li>The owner gets a private link by email and signs in with a one-time code.</li>
+          <li>They upload bank statements, and take photos of the driver's license and a voided check with the phone camera.</li>
+          <li>They read the application and sign it online.</li>
+          <li>Each file is checked when it arrives: missing months, a photo that is too small or blurry, a check whose routing number is wrong. Staff can send a file back with a reason, and the owner sees what to fix.</li>
+          <li>Instead of uploading statements, the owner can allow a read-only connection to the business bank account.</li>
+          <li>In English and Spanish.</li>
+        </ul>
+        <ul class="he">
+          <li>בעלי העסק מקבלים קישור פרטי במייל ונכנסים עם קוד חד-פעמי.</li>
+          <li>הם מעלים דפי בנק, ומצלמים במצלמת הטלפון את רישיון הנהיגה וצ'ק מבוטל.</li>
+          <li>הם קוראים את טופס הבקשה וחותמים עליו באינטרנט.</li>
+          <li>כל קובץ נבדק כשהוא מגיע: חודשים חסרים, תמונה קטנה או מטושטשת מדי, צ'ק עם מספר ניתוב (routing) שגוי. הצוות יכול להחזיר קובץ עם סיבה, ובעלי העסק רואים מה לתקן.</li>
+          <li>במקום להעלות דפי בנק, בעלי העסק יכולים לאשר חיבור לקריאה בלבד לחשבון הבנק של העסק.</li>
+          <li>באנגלית ובספרדית.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">The document page of Sunrise Dental Studio PLLC (DEMO), opened on a phone.</span><span class="he">דף המסמכים של <bdi>Sunrise Dental Studio PLLC (DEMO)</bdi>, פתוח בטלפון.</span></p>
+        <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">The e-signature is a test version, and the bank connection is not connected yet. The link and code emails land in a test mailbox on the demo computer. Legal texts marked "[COUNSEL TO PROVIDE]" wait for a lawyer.</p><p class="he">החתימה האלקטרונית היא גרסת בדיקה, והחיבור לבנק עוד לא מחובר. המיילים עם הקישור והקוד מגיעים לתיבת דואר לבדיקה במחשב ההדגמה. טקסטים משפטיים שמסומנים <bdi>"[COUNSEL TO PROVIDE]"</bdi> ממתינים לעורך דין.</p></div>
+      </div>
+      <div class="shots">
+        <figure class="phone"><button type="button" class="shot" data-src="portal.png" data-native="1"><img src="portal.png" alt="The owner's document checklist on a phone" loading="lazy"></button>
+          <figcaption><span class="en">The checklist the owner sees on the phone.</span><span class="he">רשימת המסמכים שבעלי העסק רואים בטלפון.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 3 Bank analysis -->
+    <article class="feature" id="bank">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 3</span><span class="he">שלב 3</span></p>
+        <h3><span class="en">Bank statement analysis</span><span class="he">ניתוח דפי בנק</span></h3>
+        <p class="one en">Reads the statements and works out what the business really takes in from customers.</p>
+        <p class="one he">קורא את דפי הבנק ומחשב כמה כסף באמת נכנס לעסק מלקוחות.</p>
+        <ul class="en">
+          <li>Lists every transaction with a category: card sales, transfers, payroll, funder payments and more. Staff can change the category of many rows at once.</li>
+          <li>Monthly figures: true revenue next to total deposits, the average daily balance, the lowest balance, negative days, bounced items (NSF) and overdrafts.</li>
+          <li>Finds other advances the business already pays (positions): the funder, how often, how much, and an estimate of what is left.</li>
+          <li>Warning signals, for example many round-number deposits, or balances that do not add up, which can mean an edited statement.</li>
+          <li>A person approves the analysis. Matching uses the approved version.</li>
+        </ul>
+        <ul class="he">
+          <li>מציג כל תנועה עם קטגוריה: מכירות בכרטיס, העברות, משכורות, תשלומים לגופי מימון ועוד. הצוות יכול לשנות קטגוריה להרבה שורות בבת אחת.</li>
+          <li>נתונים חודשיים: הכנסה אמיתית (true revenue) לצד סך ההפקדות, יתרה יומית ממוצעת, היתרה הנמוכה, ימים שליליים, חיובים שחזרו (NSF) ומשיכות יתר.</li>
+          <li>מזהה מקדמות קיימות שהעסק כבר משלם (positions): גוף המימון, התדירות, הסכום והערכה של מה שנשאר.</li>
+          <li>אותות אזהרה (Warning signals), למשל הרבה הפקדות בסכומים עגולים, או יתרות שלא מסתדרות, מה שעלול להעיד על דף בנק שנערך.</li>
+          <li>אדם מאשר את הניתוח, וההתאמה לגופי המימון משתמשת בגרסה המאושרת.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Apex Logistics LLC (DEMO), five statements: $429,111.89 in deposits, of which $359,111.89 is true revenue. The other $70,000 was money from funders. Two other advances found: a weekly payment of $1,500 and a daily payment of $450, about $15,950 a month together.</span><span class="he"><bdi>Apex Logistics LLC (DEMO)</bdi>, חמישה דפי בנק: הפקדות של <bdi>$429,111.89</bdi>, ומתוכן <bdi>$359,111.89</bdi> הכנסה אמיתית. שאר <bdi>$70,000</bdi> היו כסף מגופי מימון. נמצאו שתי מקדמות קיימות: תשלום שבועי של <bdi>$1,500</bdi> ותשלום יומי של <bdi>$450</bdi>, יחד כ-<bdi>$15,950</bdi> בחודש.</span></p>
+        <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">A built-in reader handles the demo statements. Reading real PDF statements uses an AI reading service (Anthropic). It is built in, and stays switched off until an account is connected.</p><p class="he">קורא מובנה מטפל בדפי הבנק של ההדגמה. קריאת דפי בנק אמיתיים בקובצי PDF נעשית בשירות קריאה מבוסס בינה מלאכותית (Anthropic). הוא כבר בנוי, וכבוי עד שמחברים חשבון.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot tall" data-src="scrub.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-apex/scrub</span></span><img src="scrub.png" alt="Bank analysis for Apex Logistics with monthly figures, warning signals and positions" loading="lazy"></button>
+          <figcaption><span class="en">Bank analysis for Apex Logistics (DEMO). Tap to see the whole screen.</span><span class="he">ניתוח דפי הבנק של <bdi>Apex Logistics (DEMO)</bdi>. הקישו כדי לראות את כל המסך.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 4 Matching -->
+    <article class="feature" id="matching">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 4</span><span class="he">שלב 4</span></p>
+        <h3><span class="en">Funders and matching</span><span class="he">גופי מימון והתאמה</span></h3>
+        <p class="one en">Shows which funders would take the deal, and the exact reason for each no.</p>
+        <p class="one he">מראה אילו גופי מימון יקבלו את העסקה, ואת הסיבה המדויקת לכל סירוב.</p>
+        <ul class="en">
+          <li>A funder directory with contacts, ISO agreements and programs.</li>
+          <li>Each program keeps its rules (the buy box): credit score, time in business, revenue, negative days, other advances, states and industries. Every change is saved as a new version.</li>
+          <li>One click checks every active program against the approved analysis: Qualified, Conditional or Disqualified, with a score and the reasons.</li>
+          <li>Checks that the brokerage is registered in every state that requires it.</li>
+          <li>Reminds you when a program's rules have not been checked for 90 days.</li>
+        </ul>
+        <ul class="he">
+          <li>ספריית גופי מימון עם אנשי קשר, הסכמי ISO ותוכניות.</li>
+          <li>כל תוכנית שומרת את הכללים שלה (buy box): דירוג אשראי, ותק העסק, הכנסות, ימים שליליים, מקדמות קיימות, מדינות וענפים. כל שינוי נשמר כגרסה חדשה.</li>
+          <li>לחיצה אחת בודקת את כל התוכניות הפעילות מול הניתוח המאושר: <bdi>Qualified</bdi>, <bdi>Conditional</bdi> או <bdi>Disqualified</bdi>, עם ציון והסיבות.</li>
+          <li>בודק שחברת התיווך רשומה בכל מדינה שדורשת זאת (בדיקת רישום הברוקר).</li>
+          <li>מזכיר כשהכללים של תוכנית לא נבדקו 90 יום.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Metro HVAC Services LLC (DEMO): 8 programs checked, 3 qualify. Summit Capital Partners says no for three reasons: a credit score of 580 is below its 650, 4 negative days are more than its 2, and it takes no deal with another advance.</span><span class="he"><bdi>Metro HVAC Services LLC (DEMO)</bdi>: נבדקו 8 תוכניות, 3 מתאימות. <bdi>Summit Capital Partners</bdi> מסרבת משלוש סיבות: דירוג אשראי 580 נמוך מהמינימום שלה, 650; ‏4 ימים שליליים הם יותר מ-2 שהיא מתירה; והיא לא מקבלת עסק עם מקדמה קיימת.</span></p>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">The 8 demo funders and their rules are invented. Enter each real funder's current rules before real use.</p><p class="he">שמונת גופי המימון בהדגמה והכללים שלהם בדויים. לפני שימוש אמיתי מזינים את הכללים העדכניים של כל גוף מימון.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><button type="button" class="shot tall" data-src="matching.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-metro/matching</span></span><img src="matching.png" alt="Matching results with qualified and disqualified programs" loading="lazy"></button>
+          <figcaption><span class="en">Matching for Metro HVAC (DEMO): who qualifies, and why the others do not.</span><span class="he">התאמה עבור <bdi>Metro HVAC (DEMO)</bdi>: מי מתאים, ולמה האחרים לא.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="funders.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/funders</span></span><img src="funders.png" alt="The funder directory" loading="lazy"></button>
+          <figcaption><span class="en">The funder directory.</span><span class="he">ספריית גופי המימון.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="program.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/funders/…/programs/…</span></span><img src="program.png" alt="The rules of one funder program" loading="lazy"></button>
+          <figcaption><span class="en">One program's rules (the buy box).</span><span class="he">הכללים של תוכנית אחת (buy box).</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 5 Submissions -->
+    <article class="feature" id="submissions">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 5</span><span class="he">שלב 5</span></p>
+        <h3><span class="en">Sending deals to funders</span><span class="he">שליחת עסקאות לגופי מימון</span></h3>
+        <p class="one en">Sends the file to the chosen funders in one step, and tracks each answer.</p>
+        <p class="one he">שולח את התיק לגופי המימון שנבחרו בצעד אחד, ועוקב אחרי כל תשובה.</p>
+        <ul class="en">
+          <li>By email (documents attached, or as secure links), through a funder's API, or through a funder's portal.</li>
+          <li>Checks before sending: the required documents, the owner's consent to share the file, and broker registration.</li>
+          <li>Sending to a program that rejected the deal needs a manager and a written reason. Sending to more than 5 programs needs a justification. Both are kept in the audit log.</li>
+          <li>Each submission shows its status and the funder's answer.</li>
+        </ul>
+        <ul class="he">
+          <li>במייל (עם המסמכים מצורפים או כקישורים מאובטחים), דרך ה-API של גוף המימון, או דרך הפורטל שלו.</li>
+          <li>בדיקות לפני שליחה: המסמכים הנדרשים, הסכמה של בעלי העסק לשתף את התיק, ורישום הברוקר.</li>
+          <li>שליחה לתוכנית שפסלה את העסקה דורשת מנהל ונימוק בכתב. שליחה ליותר מ-5 תוכניות דורשת הצדקה. שניהם נשמרים ביומן הביקורת.</li>
+          <li>כל הגשה מציגה את הסטטוס שלה ואת התשובה של גוף המימון.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Metro HVAC (DEMO), sent to Harbor Funding Group and Summit Capital Partners: both are held back because the application is not signed and documents are missing. Summit rejected the deal, so sending it there anyway also asks for a reason.</span><span class="he"><bdi>Metro HVAC (DEMO)</bdi>, שליחה ל-<bdi>Harbor Funding Group</bdi> ול-<bdi>Summit Capital Partners</bdi>: שתיהן נעצרות, כי טופס הבקשה לא חתום וחסרים מסמכים. <bdi>Summit</bdi> פסלה את העסקה, ולכן שליחה אליה בכל זאת מבקשת גם נימוק.</span></p>
+        <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">Emails land in a test mailbox on the demo computer, and the API channel is a simulation. Real use needs an outgoing mail server.</p><p class="he">המיילים מגיעים לתיבת דואר לבדיקה במחשב ההדגמה, וערוץ ה-API הוא הדמיה. לשימוש אמיתי צריך שרת דואר יוצא.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot" data-src="submit-checks.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-metro/matching · Submit</span></span><img src="submit-checks.png" alt="The checks shown before a deal is sent to two programs" loading="lazy"></button>
+          <figcaption><span class="en">The checks before sending, for Metro HVAC (DEMO).</span><span class="he">הבדיקות לפני שליחה, עבור <bdi>Metro HVAC (DEMO)</bdi>.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 6 Offers -->
+    <article class="feature" id="offers">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 6</span><span class="he">שלב 6</span></p>
+        <h3><span class="en">Offers and the client comparison</span><span class="he">הצעות והשוואה ללקוח</span></h3>
+        <p class="one en">Compares offers side by side, and prepares what the owner sees.</p>
+        <p class="one he">משווה הצעות זו לצד זו, ומכין את מה שבעלי העסק יראו.</p>
+        <ul class="en">
+          <li>Enter an offer in a form, or paste the funder's email to fill the form.</li>
+          <li>The comparison shows the funded amount, the net to the business after fees and payoffs, the payment, the total payback, the total cost, the APR and the term. Rank by lowest total cost or another measure.</li>
+          <li>The system works out its own APR estimate and warns when it differs from the funder's figure.</li>
+          <li>The client view follows the state's disclosure rules. In New York it stays locked until each funder's official disclosure is attached.</li>
+          <li>The owner never sees the buy rate, the points or the commission. The client comparison is made as a PDF with a digital fingerprint, so what was shown can be proven later.</li>
+        </ul>
+        <ul class="he">
+          <li>מזינים הצעה בטופס, או מדביקים את המייל של גוף המימון והטופס מתמלא.</li>
+          <li>ההשוואה מציגה את סכום המימון, הנטו לעסק אחרי עמלות וסילוקים, התשלום, סך ההחזר, העלות הכוללת, APR (העלות השנתית של המימון) והתקופה. אפשר לדרג לפי העלות הכוללת הנמוכה או לפי מדד אחר.</li>
+          <li>המערכת מחשבת הערכת APR משלה ומתריעה כשהיא שונה מהמספר של גוף המימון.</li>
+          <li>תצוגת הלקוח פועלת לפי כללי הגילוי הנאות של המדינה. בניו יורק היא נעולה עד שמצרפים את מסמך הגילוי הנאות הרשמי של כל גוף מימון.</li>
+          <li>בעלי העסק לא רואים את מחיר הקנייה, את הנקודות או את העמלה. ההשוואה ללקוח נוצרת כקובץ PDF עם טביעת אצבע דיגיטלית, כך שאפשר להוכיח אחר כך מה הוצג.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Bella Vista Trattoria Inc (DEMO), New York: three offers. The best total cost is Summit Capital Partners: $65,000 funded, $63,700 net, $22,750 total cost. The client view stays locked until the disclosures are attached.</span><span class="he"><bdi>Bella Vista Trattoria Inc (DEMO)</bdi>, ניו יורק: שלוש הצעות. העלות הכוללת הטובה ביותר היא של <bdi>Summit Capital Partners</bdi>: מימון של <bdi>$65,000</bdi>, נטו <bdi>$63,700</bdi>, עלות כוללת <bdi>$22,750</bdi>. תצוגת הלקוח נעולה עד שמצרפים את מסמכי הגילוי הנאות.</span></p>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Offer emails pass the same contact checks as every other message.</p><p class="he">מיילים עם הצעות עוברים את אותן בדיקות פנייה כמו כל הודעה אחרת.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot tall" data-src="offers.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-bella/offers</span></span><img src="offers.png" alt="Three offers compared side by side, with the client view blocked" loading="lazy"></button>
+          <figcaption><span class="en">Three offers for Bella Vista Trattoria (DEMO). Tap to see the blocked client view at the bottom.</span><span class="he">שלוש הצעות עבור <bdi>Bella Vista Trattoria (DEMO)</bdi>. הקישו כדי לראות למטה את תצוגת הלקוח החסומה.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 7 Funding -->
+    <article class="feature" id="funding">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 7</span><span class="he">שלב 7</span></p>
+        <h3><span class="en">Funding, payments and renewals</span><span class="he">מימון, תשלומים וחידושים</span></h3>
+        <p class="one en">Records the funding, follows the payments, and shows when a client can come back for more.</p>
+        <p class="one he">רושם את המימון, עוקב אחרי התשלומים ומראה מתי לקוח יכול לחזור לסבב נוסף.</p>
+        <ul class="en">
+          <li>The funding record holds the amount, the payback and the payment schedule. The schedule skips weekends and bank holidays.</li>
+          <li>Payments are matched to the schedule, and returned payments are flagged. Funder payment reports are imported from a file, with a saved column layout for each funder.</li>
+          <li>A paid bar, a projected date for reaching 50% paid, and an estimate of the new cash a renewal would give.</li>
+          <li>"Funded &amp; renewals" lists every live funding with how much is paid, when it reaches the renewal threshold and whether it qualifies, with filters for "Eligible now", "Window soon" and "Behind". A daily check raises renewal alerts for the rep.</li>
+        </ul>
+        <ul class="he">
+          <li>רשומת המימון כוללת את הסכום, סך ההחזר ולוח התשלומים. הלוח מדלג על סופי שבוע וחגים בנקאיים.</li>
+          <li>התשלומים מותאמים ללוח, ותשלומים שחזרו מסומנים. דוחות התשלומים של גופי המימון נטענים מקובץ, עם מבנה עמודות שמור לכל גוף מימון.</li>
+          <li>פס התקדמות של ההחזר, תאריך צפוי להגעה ל-50%, והערכה של הכסף החדש שחידוש ייתן.</li>
+          <li>המסך <bdi>"Funded &amp; renewals"</bdi> מציג כל מימון פעיל: כמה שולם, מתי הוא יגיע לסף החידוש והאם הוא עומד בתנאים, עם מסננים ל-<bdi>"Eligible now"</bdi>, <bdi>"Window soon"</bdi> ו-<bdi>"Behind"</bdi>. בדיקה יומית מקפיצה לנציג התראות על חידוש.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Peak Roofing &amp; Construction LLC (DEMO): $50,000 funded. After $1,500 in fees and a $12,000 payoff of an earlier advance, $36,500 reached the business. It pays back $70,000 in 126 daily payments of $555.56. Projected 50% paid: Feb 11, 2027.</span><span class="he"><bdi>Peak Roofing &amp; Construction LLC (DEMO)</bdi>: מימון של <bdi>$50,000</bdi>. אחרי עמלות של <bdi>$1,500</bdi> וסילוק של מקדמה קודמת ב-<bdi>$12,000</bdi>, לעסק הגיעו <bdi>$36,500</bdi>. העסק מחזיר <bdi>$70,000</bdi> ב-126 תשלומים יומיים של <bdi>$555.56</bdi>. תאריך צפוי ל-50%: 11 בפברואר 2027.</span></p>
+        <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">Payment reports come in as files today. A live bank feed or funder connection is not connected yet.</p><p class="he">דוחות התשלומים נטענים היום מקבצים. חיבור חי לבנק או לגוף המימון עוד לא מחובר.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><button type="button" class="shot tall" data-src="funding.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-peak/funding</span></span><img src="funding.png" alt="The funding record for Peak Roofing with the paid bar and payments" loading="lazy"></button>
+          <figcaption><span class="en">The funding record for Peak Roofing (DEMO).</span><span class="he">רשומת המימון של <bdi>Peak Roofing (DEMO)</bdi>.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="funded.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/funded</span></span><img src="funded.png" alt="Funded deals and the Renewal Radar" loading="lazy"></button>
+          <figcaption><span class="en">Funded deals and the renewal pipeline.</span><span class="he">עסקאות שמומנו ורשימת החידושים.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <!-- 8 Commissions -->
+    <article class="feature" id="commissions">
+      <div class="text">
+        <p class="kicker"><span class="en">Step 8</span><span class="he">שלב 8</span></p>
+        <h3><span class="en">Commissions</span><span class="he">עמלות</span></h3>
+        <p class="one en">What the brokerage earns on each deal, who gets what, and what can be taken back.</p>
+        <p class="one he">כמה חברת התיווך מרוויחה על כל עסקה, מי מקבל מה, ומה עלול לחזור.</p>
+        <ul class="en">
+          <li>Expected commission: the funder's base points, plus the upsell between the buy rate and the rate the business pays.</li>
+          <li>The split between the rep and the house, payments received from the funder, and payouts.</li>
+          <li>Clawbacks: if the business stops paying, or pays off early within the funder's window, the commission comes back, split the same way.</li>
+          <li>A statement for each rep, for any period, downloads as a spreadsheet.</li>
+        </ul>
+        <ul class="he">
+          <li>עמלה צפויה: נקודות הבסיס של גוף המימון, ועוד התוספת (upsell) בין מחיר הקנייה למחיר שהעסק משלם.</li>
+          <li>החלוקה בין הנציג לחברה (House), תשלומים שהתקבלו מגוף המימון, והתשלומים לנציגים.</li>
+          <li>החזרי עמלה (clawback): אם העסק מפסיק לשלם, או מסלק מוקדם בתוך החלון של גוף המימון, העמלה חוזרת, באותה חלוקה.</li>
+          <li>דוח לכל נציג, לכל תקופה, יורד כגיליון אלקטרוני.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Peak Roofing: $6,000 expected, from 10 upsell points ($5,000) and 2 base points ($1,000). Rep $2,400, house $3,600. The clawback window runs to Feb 7, 2027.</span><span class="he"><bdi>Peak Roofing</bdi>: עמלה צפויה של <bdi>$6,000</bdi>, מ-10 נקודות upsell ‏(<bdi>$5,000</bdi>) ו-2 נקודות בסיס (<bdi>$1,000</bdi>). נציג <bdi>$2,400</bdi>, החברה <bdi>$3,600</bdi>. חלון החזר העמלה נמשך עד 7 בפברואר 2027.</span></p>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot" data-src="commissions.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/commissions</span></span><img src="commissions.png" alt="The commissions screen" loading="lazy"></button>
+          <figcaption><span class="en">Commissions: expected, split and received.</span><span class="he">עמלות: צפויות, חלוקה ותקבולים.</span></figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="group" aria-labelledby="g2-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="g2-title"><span class="en">Across the whole system</span><span class="he">לאורך כל המערכת</span></h2>
+      <p class="en">These parts work behind every step.</p>
+      <p class="he">החלקים האלה פועלים מאחורי כל שלב.</p>
+    </div>
+
+    <article class="feature" id="compliance">
+      <div class="text">
+        <h3><span class="en">Compliance center and messages</span><span class="he">מרכז הציות והודעות</span></h3>
+        <p class="one en">Checks the rules on the server before a deal is sent, an offer is shown or a message goes out.</p>
+        <p class="one he">בודק את הכללים בשרת לפני שעסקה נשלחת, הצעה מוצגת או הודעה יוצאת.</p>
+        <ul class="en">
+          <li>State rules: broker registration and disclosure rules for each state. Each rule shows "Pending counsel" until a lawyer confirms it.</li>
+          <li>Broker licenses with reminders before they expire, and a countdown for the Texas registration.</li>
+          <li>Consent records, the do-not-contact list, and contact hours in the owner's local time. Approved message templates.</li>
+          <li>Every text and email passes these checks first. A blocked or held message says why.</li>
+          <li>A record of every disclosure shown, and retention rules: nothing is deleted until a lawyer confirms the periods.</li>
+          <li>An audit log of every change and every view of private data. The entries are chained, so changing or removing one shows up in the nightly check.</li>
+          <li>A watchlist of state bills that are not law yet, so compliance can follow them.</li>
+          <li>Private numbers, such as Social Security and bank account numbers, are encrypted and shown masked. Every reveal is recorded.</li>
+        </ul>
+        <ul class="he">
+          <li>כללי מדינות: רישום ברוקר וכללי גילוי נאות לכל מדינה. כל כלל מסומן <bdi>"Pending counsel"</bdi> עד שעורך דין מאשר אותו.</li>
+          <li>רישיונות ברוקר עם תזכורות לפני שהם פגים, וספירה לאחור לרישום בטקסס.</li>
+          <li>תיעוד הסכמות, רשימת "אין ליצור קשר" (DNC), ושעות יצירת קשר לפי השעה המקומית של בעלי העסק. תבניות הודעה מאושרות.</li>
+          <li>כל הודעת טקסט וכל מייל עוברים את הבדיקות האלה קודם. הודעה שנחסמה או הושהתה מסבירה למה.</li>
+          <li>תיעוד של כל מסמך גילוי נאות שהוצג, וכללי שמירת מידע: שום דבר לא נמחק עד שעורך דין מאשר את התקופות.</li>
+          <li>יומן ביקורת של כל שינוי ושל כל צפייה במידע פרטי. הרשומות משורשרות, כך ששינוי או מחיקה של אחת מהן מתגלים בבדיקה הלילית.</li>
+          <li>רשימת מעקב אחרי הצעות חוק במדינות שעוד לא נכנסו לתוקף, כדי שאנשי הציות יוכלו לעקוב אחריהן.</li>
+          <li>מספרים פרטיים, כמו מספר הביטוח הסוציאלי האמריקאי (SSN) ומספרי חשבון בנק, מוצפנים ומוצגים מוסתרים. כל חשיפה נרשמת.</li>
+        </ul>
+        <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">"TX registration: 53 days left". From Jan 1, 2027, deals in Texas are blocked at submission and presentation until the registration is active. Four demo phones have no call or text consent, so nobody may call or text them yet.</span><span class="he"><bdi>"TX registration: 53 days left"</bdi>. מ-1 בינואר 2027, עסקאות בטקסס ייחסמו בהגשה ובהצגה ללקוח עד שהרישום יהיה פעיל. לארבעה טלפונים בהדגמה אין הסכמה לשיחות או להודעות, ולכן אסור עדיין להתקשר אליהם או לשלוח להם הודעה.</span></p>
+        <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">Text messages are recorded but never sent. The rules are a careful starting point, not legal advice, and wait for a lawyer's review.</p><p class="he">הודעות טקסט נרשמות אבל לא נשלחות. הכללים הם נקודת התחלה זהירה ולא ייעוץ משפטי, והם ממתינים לבדיקה של עורך דין.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><button type="button" class="shot" data-src="compliance.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/compliance</span></span><img src="compliance.png" alt="The compliance center" loading="lazy"></button>
+          <figcaption><span class="en">The compliance center.</span><span class="he">מרכז הציות.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="state-rule.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/compliance/rules/NY</span></span><img src="state-rule.png" alt="The rules for New York" loading="lazy"></button>
+          <figcaption><span class="en">New York's rules.</span><span class="he">הכללים של ניו יורק.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="audit.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/compliance/audit</span></span><img src="audit.png" alt="The audit log" loading="lazy"></button>
+          <figcaption><span class="en">The audit log.</span><span class="he">יומן הביקורת.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="feature" id="reports">
+      <div class="text">
+        <h3><span class="en">Reports</span><span class="he">דוחות</span></h3>
+        <p class="one en">How the business is doing, in numbers.</p>
+        <p class="one he">איך העסק מתפקד, במספרים.</p>
+        <ul class="en">
+          <li>The funnel from lead to funded, approval and funded rates, commission and time to fund.</li>
+          <li>Funder performance: how often each funder approves and funds.</li>
+          <li>Pick a date range, and break the figures down by rep, funder, lead source or month. The figures download as a file.</li>
+        </ul>
+        <ul class="he">
+          <li>המשפך מליד ועד מימון, שיעורי אישור ומימון, עמלות וזמן עד מימון.</li>
+          <li>ביצועי גופי מימון: כמה פעמים כל אחד מאשר ומממן.</li>
+          <li>בוחרים טווח תאריכים ומפרקים לפי נציג, גוף מימון, מקור ליד או חודש. אפשר להוריד את הנתונים לקובץ.</li>
+        </ul>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot tall" data-src="reports.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/reports</span></span><img src="reports.png" alt="The reports screen" loading="lazy"></button>
+          <figcaption><span class="en">Reports.</span><span class="he">דוחות.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="feature" id="security">
+      <div class="text">
+        <h3><span class="en">Sign-in, roles and security</span><span class="he">כניסה, הרשאות ואבטחה</span></h3>
+        <p class="one en">Each person sees only what their role allows, and every action is recorded.</p>
+        <p class="one he">כל אחד רואה רק מה שהתפקיד שלו מתיר, וכל פעולה נרשמת.</p>
+        <ul class="en">
+          <li>Sign-in with a password and a code from an authenticator app (two-step sign-in). Too many wrong tries lock the account for 15 minutes.</li>
+          <li>Six roles. A rep sees their own deals; a viewer can look but not change.</li>
+          <li>An admin approves a reset of someone's two-step sign-in.</li>
+          <li>In the demo, one-click demo accounts replace passwords. The production settings refuse demo mode.</li>
+        </ul>
+        <ul class="he">
+          <li>כניסה עם סיסמה וקוד מאפליקציית אימות (אימות דו-שלבי). יותר מדי ניסיונות שגויים נועלים את החשבון ל-15 דקות.</li>
+          <li>שישה תפקידים. נציג רואה את העסקאות שלו; צופה יכול להסתכל ולא לשנות.</li>
+          <li>מנהל מערכת מאשר איפוס של אימות דו-שלבי.</li>
+          <li>בהדגמה, חשבונות הדגמה בלחיצה אחת מחליפים סיסמאות. הגדרות הייצור מסרבות למצב הדגמה.</li>
+        </ul>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
+      </div>
+      <div class="shots">
+        <figure><button type="button" class="shot" data-src="login.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/login</span></span><img src="login.png" alt="The sign-in page with the demo accounts" loading="lazy"></button>
+          <figcaption><span class="en">The sign-in page, with the demo accounts.</span><span class="he">דף הכניסה, עם חשבונות ההדגמה.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="feature" id="help">
+      <div class="text">
+        <h3><span class="en">Built-in help, in English and Hebrew</span><span class="he">עזרה מובנית, באנגלית ובעברית</span></h3>
+        <p class="one en">A plain-language explanation of every screen, number, rule and calculation, inside the app.</p>
+        <p class="one he">הסבר בשפה פשוטה לכל מסך, מספר, כלל וחישוב, בתוך המערכת.</p>
+        <ul class="en">
+          <li>A guide of 24 pages in each language, 70 glossary terms and an FAQ.</li>
+          <li>A "?" button on every screen opens that screen's explanation on the side.</li>
+          <li>An "i" next to key numbers explains them in one sentence.</li>
+          <li>When something is blocked, a "Why?" link opens the answer.</li>
+          <li>Search with everyday words, in English or Hebrew. Each person's language choice is saved.</li>
+        </ul>
+        <ul class="he">
+          <li>מדריך של 24 עמודים בכל שפה, 70 מונחים במילון ושאלות נפוצות.</li>
+          <li>כפתור "?" בכל מסך פותח בצד את ההסבר של אותו מסך.</li>
+          <li>"i" ליד מספרים חשובים מסביר אותם במשפט אחד.</li>
+          <li>כשמשהו חסום, קישור <bdi>"Why?"</bdi> פותח את התשובה.</li>
+          <li>חיפוש במילים יומיומיות, באנגלית או בעברית. בחירת השפה נשמרת לכל משתמש.</li>
+        </ul>
+        <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><button type="button" class="shot" data-src="help-drawer.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/deals/demo-deal-apex/scrub · ?</span></span><img src="help-drawer.png" alt="The help panel open beside the bank analysis screen" loading="lazy"></button>
+          <figcaption><span class="en">The "?" panel beside the bank analysis.</span><span class="he">חלונית ה-"?" לצד ניתוח דפי הבנק.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="help-he.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/help/bank-analysis</span></span><img src="help-he.png" alt="The guide page on bank analysis, in Hebrew" loading="lazy"></button>
+          <figcaption><span class="en">The guide in Hebrew.</span><span class="he">המדריך בעברית.</span></figcaption></figure>
+        <figure><button type="button" class="shot" data-src="help.png"><span class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">/help?q=renew</span></span><img src="help.png" alt="Help search results for the word renew" loading="lazy"></button>
+          <figcaption><span class="en">Searching the help for "renew".</span><span class="he">חיפוש המילה "renew" בעזרה.</span></figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="real" id="today" aria-labelledby="today-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="today-title"><span class="en">What runs today, and what needs a connection</span><span class="he">מה עובד היום, ומה צריך חיבור</span></h2>
+      <p class="en">The system was built and tested without any real accounts. Each item below has a working stand-in, so nothing is blocked.</p>
+      <p class="he">המערכת נבנתה ונבדקה בלי שום חשבון אמיתי. לכל פריט כאן יש תחליף שעובד, כך ששום דבר לא חסום.</p>
+    </div>
+    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="today-title">
+      <table class="en">
+        <thead><tr><th>Area</th><th>In the demo today</th><th>For real clients</th></tr></thead>
+        <tbody>
+          <tr><td>Reading bank statements</td><td>A built-in reader for the demo files</td><td>An account with an AI reading service (Anthropic)</td></tr>
+          <tr><td>Email to funders and owners</td><td>Caught by a test mailbox on the computer</td><td>A real outgoing mail server</td></tr>
+          <tr><td>Text messages</td><td>Recorded, never sent</td><td>A text message provider with a registered business number</td></tr>
+          <tr><td>Payments</td><td>Imported from funder report files</td><td>A bank feed or funder report connection</td></tr>
+          <tr><td>Past defaults</td><td>The brokerage's own records</td><td>An industry default database</td></tr>
+          <tr><td>E-signature</td><td>A test version</td><td>A real e-signature provider</td></tr>
+          <tr><td>Compliance rules</td><td>A careful starting point, marked "Pending counsel"</td><td>A lawyer's review</td></tr>
+          <tr><td>Funders and their rules</td><td>8 invented funders</td><td>Each real funder's current rules</td></tr>
+          <tr><td>Hosting</td><td>Runs on one computer</td><td>An online setup by a technical person</td></tr>
+          <tr><td>Spanish wording</td><td>Not yet checked by a native speaker</td><td>A review by a native Spanish speaker</td></tr>
+        </tbody>
+      </table>
+      <table class="he">
+        <thead><tr><th>תחום</th><th>היום בהדגמה</th><th>לעבודה עם לקוחות אמיתיים</th></tr></thead>
+        <tbody>
+          <tr><td>קריאת דפי בנק</td><td>קורא מובנה לקובצי ההדגמה</td><td>חשבון בשירות קריאה מבוסס בינה מלאכותית (Anthropic)</td></tr>
+          <tr><td>מיילים לגופי מימון ולבעלי עסקים</td><td>נתפסים בתיבת דואר לבדיקה במחשב</td><td>שרת דואר יוצא אמיתי</td></tr>
+          <tr><td>הודעות טקסט</td><td>נרשמות, לא נשלחות</td><td>ספק הודעות טקסט עם מספר עסקי רשום</td></tr>
+          <tr><td>תשלומים</td><td>נטענים מקובצי הדוחות של גופי המימון</td><td>חיבור לבנק או לדוחות של גופי המימון</td></tr>
+          <tr><td>הפרות קודמות</td><td>הרשומות של חברת התיווך עצמה</td><td>מאגר ענפי של הפרות</td></tr>
+          <tr><td>חתימה אלקטרונית</td><td>גרסת בדיקה</td><td>ספק חתימה אלקטרונית אמיתי</td></tr>
+          <tr><td>כללי ציות</td><td>נקודת התחלה זהירה, מסומנת <bdi>"Pending counsel"</bdi></td><td>בדיקה של עורך דין</td></tr>
+          <tr><td>גופי מימון וכללים</td><td>8 גופי מימון בדויים</td><td>הכללים העדכניים של כל גוף מימון אמיתי</td></tr>
+          <tr><td>אחסון</td><td>רץ על מחשב אחד</td><td>התקנה באינטרנט על ידי איש טכני</td></tr>
+          <tr><td>הנוסח בספרדית</td><td>עוד לא נבדק על ידי דובר שפת אם</td><td>בדיקה של דובר ספרדית</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="limits" aria-labelledby="limits-title">
+  <div class="wrap">
+    <h2 class="sec-head" id="limits-title" style="font-size: var(--step-3)"><span class="en">Known limits</span><span class="he">מגבלות ידועות</span></h2>
+    <ul class="en">
+      <li>Some edit screens are not built yet: editing a business or its owners (so a credit score cannot be typed in on screen), bank accounts, sharing or reassigning a deal, the brokerage profile, feature switches and per-stage time limits. The system can do these steps; the screens come next.</li>
+      <li>The pipeline board cannot move a deal backwards. That needs a reason, which the deal page asks for.</li>
+      <li>Some warnings are built but not switched on yet: signs of an edited PDF, a payment processor split, and some document checks.</li>
+      <li>Notifications are stored but not yet shown in the bell, and task reminders are not sent.</li>
+      <li>The demo data is incomplete in places. So in the demo, many stage moves, submissions and texts stay blocked, each with its reason.</li>
+      <li>The office screens are in English. The help guide is in English and Hebrew, and the owner's document page is in English and Spanish.</li>
+    </ul>
+    <ul class="he">
+      <li>חלק ממסכי העריכה עוד לא נבנו: עריכת עסק או בעליו (ולכן אי אפשר להקליד דירוג אשראי במסך), חשבונות בנק, שיתוף או העברה של עסקה, הפרופיל של חברת התיווך, מתגי תכונות ומגבלות זמן לכל שלב. המערכת יודעת לבצע את הפעולות האלה; המסכים יגיעו בהמשך.</li>
+      <li>לוח השלבים לא יכול להחזיר עסקה לשלב קודם. זה דורש סיבה, ודף העסקה מבקש אותה.</li>
+      <li>חלק מהאזהרות בנויות אבל עוד לא מופעלות: סימנים ל-PDF שנערך, פיצול של חברת סליקה, וחלק מבדיקות המסמכים.</li>
+      <li>ההתראות נשמרות אבל עוד לא מוצגות בפעמון, ותזכורות למשימות לא נשלחות.</li>
+      <li>נתוני ההדגמה חלקיים בחלק מהמקומות. לכן בהדגמה מעברי שלב רבים, הגשות והודעות טקסט נשארים חסומים, כל אחד עם הסיבה שלו.</li>
+      <li>מסכי המשרד באנגלית. המדריך באנגלית ובעברית, ודף המסמכים של בעלי העסק באנגלית ובספרדית.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="live" id="live" aria-labelledby="live-title">
+  <div class="wrap">
+    <h2 class="sec-head" id="live-title" style="font-size: var(--step-3)"><span class="en">Seeing it live</span><span class="he">לראות את זה בפעולה</span></h2>
+    <div class="live-grid">
+      <div>
+        <p class="en">The demo runs on one computer with a single command, and needs no outside service. It can be shown live over a screen share.</p>
+        <p class="he">ההדגמה רצה על מחשב אחד בפקודה אחת, בלי שום שירות חיצוני. אפשר להציג אותה בשידור חי בשיתוף מסך.</p>
+        <p class="en">Seven demo accounts, one for each role, sign in with one click. The tour on the right takes about 10 minutes, signed in as the manager.</p>
+        <p class="he">שבעה חשבונות הדגמה, אחד לכל תפקיד, נכנסים בלחיצה אחת. הסיור כאן לוקח כ-10 דקות, בכניסה בתור המנהל.</p>
+      </div>
+      <ol class="tour">
+        <li><div><b><span class="en">Pipeline</span><span class="he">לוח השלבים</span></b> <span class="min">1 min</span><p class="en">See the five deals by stage. Drag a card to a later stage: the move is refused, with the reasons and a "Why?" link.</p><p class="he">חמש העסקאות לפי שלבים. גוררים כרטיס לשלב מאוחר יותר: המעבר נדחה, עם הסיבות וקישור <bdi>"Why?"</bdi>.</p></div></li>
+        <li><div><b><span class="en">Bank analysis</span><span class="he">ניתוח דפי בנק</span></b> <span class="min">2 min</span><p class="en">Apex Logistics, then "Run demo extraction". Compare total deposits with true revenue, and look at the other advances it found.</p><p class="he"><bdi>Apex Logistics</bdi>, ואז <bdi>"Run demo extraction"</bdi>. משווים את סך ההפקדות להכנסה האמיתית, ומסתכלים על המקדמות הקיימות שנמצאו.</p></div></li>
+        <li><div><b><span class="en">Matching</span><span class="he">התאמה</span></b> <span class="min">1 min</span><p class="en">Metro HVAC, then "Run matching". See who qualifies, and the exact reasons for the others.</p><p class="he"><bdi>Metro HVAC</bdi>, ואז <bdi>"Run matching"</bdi>. רואים מי מתאים, ואת הסיבות המדויקות של האחרים.</p></div></li>
+        <li><div><b><span class="en">Offers</span><span class="he">הצעות</span></b> <span class="min">1 min</span><p class="en">Bella Vista Trattoria: three offers side by side. The client view stays locked until each disclosure is attached.</p><p class="he"><bdi>Bella Vista Trattoria</bdi>: שלוש הצעות זו לצד זו. תצוגת הלקוח נעולה עד שמצרפים כל מסמך גילוי נאות.</p></div></li>
+        <li><div><b><span class="en">Funding and commission</span><span class="he">מימון ועמלה</span></b> <span class="min">2 min</span><p class="en">"Funded &amp; renewals", then Peak Roofing: the payments, the paid bar and the 50% date. Then "Commissions".</p><p class="he"><bdi>"Funded &amp; renewals"</bdi>, ואז <bdi>Peak Roofing</bdi>: התשלומים, פס ההחזר ותאריך ה-50%. אחר כך <bdi>"Commissions"</bdi>.</p></div></li>
+        <li><div><b><span class="en">Compliance</span><span class="he">ציות</span></b> <span class="min">1 min</span><p class="en">The Texas registration countdown, the state rules and the audit log.</p><p class="he">הספירה לאחור לרישום בטקסס, כללי המדינות ויומן הביקורת.</p></div></li>
+        <li><div><b><span class="en">Help</span><span class="he">עזרה</span></b> <span class="min">2 min</span><p class="en">Press "?" on any screen. Search the help for "renew", then switch to עברית.</p><p class="he">לוחצים "?" בכל מסך. מחפשים בעזרה "renew", ועוברים לעברית.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="en">MCA Deal Hub · A demo with fictional data, marked (DEMO).</span><span class="he">MCA Deal Hub · הדגמה עם נתונים בדויים, מסומנים <bdi>(DEMO)</bdi>.</span>
+    <span class="en">The compliance features are a starting point and not legal advice.</span><span class="he">תכונות הציות הן נקודת התחלה ולא ייעוץ משפטי.</span>
+  </div>
+</footer>
+
+<dialog id="lb" aria-labelledby="lb-cap">
+  <div class="lb-inner">
+    <div class="lb-top">
+      <p id="lb-cap"></p>
+      <button type="button" class="lb-close" id="lb-close"><span class="en">Close</span><span class="he">סגירה</span></button>
+    </div>
+    <div class="lb-scroll" id="lb-scroll"><img id="lb-img" alt=""></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = 'mdh-overview-lang';
+  function apply(lang) {
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang);
+    root.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+    });
+    try { localStorage.setItem(KEY, lang); } catch (e) { /* storage blocked */ }
+  }
+  function fromHash() {
+    var h = (location.hash || '').slice(1);
+    return h === 'he' || h === 'en' ? h : null;
+  }
+  var start = fromHash();
+  if (!start) { try { var s = localStorage.getItem(KEY); if (s === 'he' || s === 'en') start = s; } catch (e) { /* storage blocked */ } }
+  apply(start || 'en');
+  window.addEventListener('hashchange', function () { var h = fromHash(); if (h) apply(h); });
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var lang = b.getAttribute('data-set-lang');
+      apply(lang);
+      if (location.hash !== '#' + lang) location.hash = lang;
+    });
+  });
+
+  var dlg = document.getElementById('lb');
+  var img = document.getElementById('lb-img');
+  var cap = document.getElementById('lb-cap');
+  var scroller = document.getElementById('lb-scroll');
+  document.querySelectorAll('.shot[data-src]').forEach(function (btn) {
+    var fig = btn.closest('figure');
+    var lang = function () { return root.getAttribute('data-lang') === 'he' ? 'he' : 'en'; };
+    var label = function () {
+      var c = fig && fig.querySelector('figcaption .' + lang());
+      return c ? c.textContent : '';
+    };
+    btn.setAttribute('aria-label', (btn.querySelector('img') || {}).alt + ' (open larger)');
+    btn.addEventListener('click', function () {
+      img.src = btn.getAttribute('data-src');
+      img.alt = (btn.querySelector('img') || {}).alt || '';
+      img.className = btn.hasAttribute('data-native') ? 'native' : '';
+      cap.textContent = label();
+      scroller.scrollTop = 0;
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+  });
+  function close() { if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open'); }
+  document.getElementById('lb-close').addEventListener('click', close);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('lb-inner')) close(); });
+})();
+</script>
+
+
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+  b.addEventListener('click', function () { document.querySelectorAll('video').forEach(function (v) { v.pause(); }); });
+});
+</script>
+
+</body>
+</html>
