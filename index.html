@@ -369,14 +369,18 @@ dialog#lb::backdrop { background: var(--overlay); }
           <li>Before a deal moves on, the system checks what the next stage needs. A blocked move lists what is missing, with a "Why?" link.</li>
           <li>Filters, saved views, CSV export, and one search box for deals, businesses, phone numbers and the last 4 digits of the EIN.</li>
           <li>Leads come in by hand or from a CSV file, each with its lead source.</li>
-          <li>The deal page holds the summary, the document checklist and the full history of actions.</li>
+          <li>The deal page holds the summary, the document checklist, the team working the deal and the full history of actions.</li>
+          <li>Staff edit the business, its owners and its bank accounts on screen, and a manager assigns or shares a deal. Private numbers stay hidden while editing.</li>
+          <li>A bell shows each person's notifications, and a daily check turns due tasks into reminders.</li>
         </ul>
         <ul class="he">
           <li>13 שלבים, מ-<bdi>"New lead"</bdi> ועד <bdi>"Funded"</bdi>, ועוד <bdi>"On hold"</bdi> ו-<bdi>"Dead"</bdi>. תצוגת לוח (גוררים כרטיס) ותצוגת טבלה.</li>
           <li>לפני שעסקה עוברת שלב, המערכת בודקת מה השלב הבא דורש. מעבר חסום מציג מה חסר, עם קישור <bdi>"Why?"</bdi>.</li>
           <li>מסננים, תצוגות שמורות, ייצוא ל-CSV, ותיבת חיפוש אחת לעסקאות, לעסקים, למספרי טלפון ול-4 הספרות האחרונות של מספר המעסיק (EIN).</li>
           <li>לידים נכנסים ידנית או מקובץ CSV, כל אחד עם מקור הליד שלו.</li>
-          <li>דף העסקה מרכז את התקציר, רשימת המסמכים והיסטוריית הפעולות המלאה.</li>
+          <li>דף העסקה מרכז את התקציר, רשימת המסמכים, הצוות שמטפל בעסקה והיסטוריית הפעולות המלאה.</li>
+          <li>הצוות עורך במסך את פרטי העסק, הבעלים וחשבונות הבנק, ומנהל מקצה עסקה לנציג או משתף אותה. מספרים פרטיים נשארים מוסתרים גם בזמן עריכה.</li>
+          <li>פעמון מציג לכל אחד את ההתראות שלו, ובדיקה יומית הופכת משימות שהגיע מועדן לתזכורות.</li>
         </ul>
         <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Five fictional businesses, each at a different stage.</span><span class="he">חמישה עסקים בדויים, כל אחד בשלב אחר.</span></p>
         <div class="status"><span class="pill ok"><span class="en">Works</span><span class="he">עובד</span></span><p class="en">Fully working in the demo.</p><p class="he">עובד במלואו בהדגמה.</p></div>
@@ -499,12 +503,14 @@ dialog#lb::backdrop { background: var(--overlay); }
           <li>Checks before sending: the required documents, the owner's consent to share the file, and broker registration.</li>
           <li>Sending to a program that rejected the deal needs a manager and a written reason. Sending to more than 5 programs needs a justification. Both are kept in the audit log.</li>
           <li>Each submission shows its status and the funder's answer.</li>
+          <li>"Funder replies": paste a funder's reply email. The system finds the deal from the tracking code and reads the reply as an offer, a decline or a request for documents. Nothing is saved until a person checks it and confirms, and the email text itself is not kept.</li>
         </ul>
         <ul class="he">
           <li>במייל (עם המסמכים מצורפים או כקישורים מאובטחים), דרך ה-API של גוף המימון, או דרך הפורטל שלו.</li>
           <li>בדיקות לפני שליחה: המסמכים הנדרשים, הסכמה של בעלי העסק לשתף את התיק, ורישום הברוקר.</li>
           <li>שליחה לתוכנית שפסלה את העסקה דורשת מנהל ונימוק בכתב. שליחה ליותר מ-5 תוכניות דורשת הצדקה. שניהם נשמרים ביומן הביקורת.</li>
           <li>כל הגשה מציגה את הסטטוס שלה ואת התשובה של גוף המימון.</li>
+          <li>המסך <bdi>"Funder replies"</bdi>: מדביקים מייל תשובה מגוף מימון. המערכת מזהה את העסקה לפי קוד המעקב, וקוראת את התשובה כהצעה, כסירוב או כבקשה למסמכים. שום דבר לא נשמר עד שאדם בודק ומאשר, וטקסט המייל עצמו לא נשמר.</li>
         </ul>
         <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">Metro HVAC (DEMO), sent to Harbor Funding Group and Summit Capital Partners: both are held back because the application is not signed and documents are missing. Summit rejected the deal, so sending it there anyway also asks for a reason.</span><span class="he"><bdi>Metro HVAC (DEMO)</bdi>, שליחה ל-<bdi>Harbor Funding Group</bdi> ול-<bdi>Summit Capital Partners</bdi>: שתיהן נעצרות, כי טופס הבקשה לא חתום וחסרים מסמכים. <bdi>Summit</bdi> פסלה את העסקה, ולכן שליחה אליה בכל זאת מבקשת גם נימוק.</span></p>
         <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">Emails land in a test mailbox on the demo computer, and the API channel is a simulation. Real use needs an outgoing mail server.</p><p class="he">המיילים מגיעים לתיבת דואר לבדיקה במחשב ההדגמה, וערוץ ה-API הוא הדמיה. לשימוש אמיתי צריך שרת דואר יוצא.</p></div>
@@ -627,6 +633,8 @@ dialog#lb::backdrop { background: var(--overlay); }
           <li>An audit log of every change and every view of private data. The entries are chained, so changing or removing one shows up in the nightly check.</li>
           <li>A watchlist of state bills that are not law yet, so compliance can follow them.</li>
           <li>Private numbers, such as Social Security and bank account numbers, are encrypted and shown masked. Every reveal is recorded.</li>
+          <li>An owner's credit score is saved only when that owner signed the credit authorization.</li>
+          <li>Texas: an internal note for staff on offers and fundings that use recurring automatic debits, which the Texas rules may restrict. It waits for a lawyer's confirmation.</li>
         </ul>
         <ul class="he">
           <li>כללי מדינות: רישום ברוקר וכללי גילוי נאות לכל מדינה. כל כלל מסומן <bdi>"Pending counsel"</bdi> עד שעורך דין מאשר אותו.</li>
@@ -637,6 +645,8 @@ dialog#lb::backdrop { background: var(--overlay); }
           <li>יומן ביקורת של כל שינוי ושל כל צפייה במידע פרטי. הרשומות משורשרות, כך ששינוי או מחיקה של אחת מהן מתגלים בבדיקה הלילית.</li>
           <li>רשימת מעקב אחרי הצעות חוק במדינות שעוד לא נכנסו לתוקף, כדי שאנשי הציות יוכלו לעקוב אחריהן.</li>
           <li>מספרים פרטיים, כמו מספר הביטוח הסוציאלי האמריקאי (SSN) ומספרי חשבון בנק, מוצפנים ומוצגים מוסתרים. כל חשיפה נרשמת.</li>
+          <li>דירוג אשראי של בעלים נשמר רק אם אותו בעלים חתם על ההרשאה לבדיקת אשראי.</li>
+          <li>טקסס: הערה פנימית לצוות על הצעות ומימונים עם חיוב אוטומטי חוזר, שהכללים בטקסס עשויים להגביל. ההערה ממתינה לאישור של עורך דין.</li>
         </ul>
         <p class="demo"><span class="label"><span class="en">In the demo</span><span class="he">בהדגמה</span></span><span class="en">"TX registration: 53 days left". From Jan 1, 2027, deals in Texas are blocked at submission and presentation until the registration is active. Four demo phones have no call or text consent, so nobody may call or text them yet.</span><span class="he"><bdi>"TX registration: 53 days left"</bdi>. מ-1 בינואר 2027, עסקאות בטקסס ייחסמו בהגשה ובהצגה ללקוח עד שהרישום יהיה פעיל. לארבעה טלפונים בהדגמה אין הסכמה לשיחות או להודעות, ולכן אסור עדיין להתקשר אליהם או לשלוח להם הודעה.</span></p>
         <div class="status"><span class="pill stand"><span class="en">Stand-in today</span><span class="he">תחליף זמני</span></span><p class="en">Text messages are recorded but never sent. The rules are a careful starting point, not legal advice, and wait for a lawyer's review.</p><p class="he">הודעות טקסט נרשמות אבל לא נשלחות. הכללים הם נקודת התחלה זהירה ולא ייעוץ משפטי, והם ממתינים לבדיקה של עורך דין.</p></div>
@@ -778,19 +788,19 @@ dialog#lb::backdrop { background: var(--overlay); }
   <div class="wrap">
     <h2 class="sec-head" id="limits-title" style="font-size: var(--step-3)"><span class="en">Known limits</span><span class="he">מגבלות ידועות</span></h2>
     <ul class="en">
-      <li>Some edit screens are not built yet: editing a business or its owners (so a credit score cannot be typed in on screen), bank accounts, sharing or reassigning a deal, the brokerage profile, feature switches and per-stage time limits. The system can do these steps; the screens come next.</li>
+      <li>A few screens are not built yet: removing an owner or a bank account, editing an existing bank account, ending a share, the brokerage profile, feature switches and per-stage time limits.</li>
       <li>The pipeline board cannot move a deal backwards. That needs a reason, which the deal page asks for.</li>
       <li>Some warnings are built but not switched on yet: signs of an edited PDF, a payment processor split, and some document checks.</li>
-      <li>Notifications are stored but not yet shown in the bell, and task reminders are not sent.</li>
-      <li>The demo data is incomplete in places. So in the demo, many stage moves, submissions and texts stay blocked, each with its reason.</li>
+      <li>The home screen is still simple. A "Today" view of what needs each person's attention is next.</li>
+      <li>In the demo, one deal (Metro HVAC) runs from submission to funding with no block. Sunrise Dental is left with missing documents on purpose, to show how the system explains a block.</li>
       <li>The office screens are in English. The help guide is in English and Hebrew, and the owner's document page is in English and Spanish.</li>
     </ul>
     <ul class="he">
-      <li>חלק ממסכי העריכה עוד לא נבנו: עריכת עסק או בעליו (ולכן אי אפשר להקליד דירוג אשראי במסך), חשבונות בנק, שיתוף או העברה של עסקה, הפרופיל של חברת התיווך, מתגי תכונות ומגבלות זמן לכל שלב. המערכת יודעת לבצע את הפעולות האלה; המסכים יגיעו בהמשך.</li>
+      <li>כמה מסכים עוד לא נבנו: הסרה של בעלים או של חשבון בנק, עריכה של חשבון בנק קיים, הפסקת שיתוף, הפרופיל של חברת התיווך, מתגי תכונות ומגבלות זמן לכל שלב.</li>
       <li>לוח השלבים לא יכול להחזיר עסקה לשלב קודם. זה דורש סיבה, ודף העסקה מבקש אותה.</li>
       <li>חלק מהאזהרות בנויות אבל עוד לא מופעלות: סימנים ל-PDF שנערך, פיצול של חברת סליקה, וחלק מבדיקות המסמכים.</li>
-      <li>ההתראות נשמרות אבל עוד לא מוצגות בפעמון, ותזכורות למשימות לא נשלחות.</li>
-      <li>נתוני ההדגמה חלקיים בחלק מהמקומות. לכן בהדגמה מעברי שלב רבים, הגשות והודעות טקסט נשארים חסומים, כל אחד עם הסיבה שלו.</li>
+      <li>מסך הבית עדיין פשוט. מסך "היום", שמראה לכל אחד מה דורש את הטיפול שלו, הוא הבא בתור.</li>
+      <li>בהדגמה, עסקה אחת (<bdi>Metro HVAC</bdi>) עוברת מהגשה ועד מימון בלי חסימה. ל-<bdi>Sunrise Dental</bdi> חסרים מסמכים בכוונה, כדי להראות איך המערכת מסבירה חסימה.</li>
       <li>מסכי המשרד באנגלית. המדריך באנגלית ובעברית, ודף המסמכים של בעלי העסק באנגלית ובספרדית.</li>
     </ul>
   </div>
@@ -809,7 +819,7 @@ dialog#lb::backdrop { background: var(--overlay); }
       <ol class="tour">
         <li><div><b><span class="en">Pipeline</span><span class="he">לוח השלבים</span></b> <span class="min">1 min</span><p class="en">See the five deals by stage. Drag a card to a later stage: the move is refused, with the reasons and a "Why?" link.</p><p class="he">חמש העסקאות לפי שלבים. גוררים כרטיס לשלב מאוחר יותר: המעבר נדחה, עם הסיבות וקישור <bdi>"Why?"</bdi>.</p></div></li>
         <li><div><b><span class="en">Bank analysis</span><span class="he">ניתוח דפי בנק</span></b> <span class="min">2 min</span><p class="en">Apex Logistics, then "Run demo extraction". Compare total deposits with true revenue, and look at the other advances it found.</p><p class="he"><bdi>Apex Logistics</bdi>, ואז <bdi>"Run demo extraction"</bdi>. משווים את סך ההפקדות להכנסה האמיתית, ומסתכלים על המקדמות הקיימות שנמצאו.</p></div></li>
-        <li><div><b><span class="en">Matching</span><span class="he">התאמה</span></b> <span class="min">1 min</span><p class="en">Metro HVAC, then "Run matching". See who qualifies, and the exact reasons for the others.</p><p class="he"><bdi>Metro HVAC</bdi>, ואז <bdi>"Run matching"</bdi>. רואים מי מתאים, ואת הסיבות המדויקות של האחרים.</p></div></li>
+        <li><div><b><span class="en">Matching</span><span class="he">התאמה</span></b> <span class="min">1 min</span><p class="en">Metro HVAC, then "Run matching". See who qualifies, and the exact reasons for the others. From here this deal can go all the way: submit to Harbor, record Harbor's offer in "Funder replies", accept it, sign the contract and record the funding.</p><p class="he"><bdi>Metro HVAC</bdi>, ואז <bdi>"Run matching"</bdi>. רואים מי מתאים, ואת הסיבות המדויקות של האחרים. מכאן אפשר להמשיך עם העסקה הזו עד הסוף: מגישים ל-<bdi>Harbor</bdi>, רושמים את ההצעה שלה במסך <bdi>"Funder replies"</bdi>, מקבלים אותה, חותמים על החוזה ורושמים את המימון.</p></div></li>
         <li><div><b><span class="en">Offers</span><span class="he">הצעות</span></b> <span class="min">1 min</span><p class="en">Bella Vista Trattoria: three offers side by side. The client view stays locked until each disclosure is attached.</p><p class="he"><bdi>Bella Vista Trattoria</bdi>: שלוש הצעות זו לצד זו. תצוגת הלקוח נעולה עד שמצרפים כל מסמך גילוי נאות.</p></div></li>
         <li><div><b><span class="en">Funding and commission</span><span class="he">מימון ועמלה</span></b> <span class="min">2 min</span><p class="en">"Funded &amp; renewals", then Peak Roofing: the payments, the paid bar and the 50% date. Then "Commissions".</p><p class="he"><bdi>"Funded &amp; renewals"</bdi>, ואז <bdi>Peak Roofing</bdi>: התשלומים, פס ההחזר ותאריך ה-50%. אחר כך <bdi>"Commissions"</bdi>.</p></div></li>
         <li><div><b><span class="en">Compliance</span><span class="he">ציות</span></b> <span class="min">1 min</span><p class="en">The Texas registration countdown, the state rules and the audit log.</p><p class="he">הספירה לאחור לרישום בטקסס, כללי המדינות ויומן הביקורת.</p></div></li>
